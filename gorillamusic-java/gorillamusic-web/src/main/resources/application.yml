@@ -29,7 +29,7 @@ mybatis:
 
 #项目目录
 project:
-  folder: c:/webser/web_app/gorillamusic/
+  folder: e:/webser/web_app/gorillamusic/
   #日志级别配置
 log:
   root:

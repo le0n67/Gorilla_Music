@@ -150,7 +150,7 @@
             <!--验证码-->
             <dependency>
                 <groupId>com.github.whvcse</groupId>
-                <artifactId>gorilla-captcha</artifactId>
+                <artifactId>easy-captcha</artifactId>
                 <version>${captcha.verion}</version>
             </dependency>
 
