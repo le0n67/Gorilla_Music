@@ -2,6 +2,7 @@ package com.gorillamusic.service;
 
 import java.util.List;
 
+import com.gorillamusic.entity.dto.TokenUserInfoDTO;
 import com.gorillamusic.entity.query.UserInfoQuery;
 import com.gorillamusic.entity.po.UserInfo;
 import com.gorillamusic.entity.vo.PaginationResultVO;
@@ -94,5 +95,6 @@ public interface UserInfoService {
      */
     void register(String email, String nickName, String password);
 
+    TokenUserInfoDTO login(String email, String password);
 
 }

@@ -1,5 +1,6 @@
 package com.gorillamusic.controller;
 
+import com.gorillamusic.entity.dto.TokenUserInfoDTO;
 import com.gorillamusic.entity.vo.CheckCodeVO;
 import com.gorillamusic.entity.vo.ResponseVO;
 import com.gorillamusic.exception.BusinessException;
@@ -55,6 +56,22 @@ public class AccountController extends ABaseController {
             }
             userInfoService.register(email, nickName, password);
             return getSuccessResponseVO(null);
+        } finally {
+            redisComponent.cleanCheckCode(checkCodeKey);
+        }
+    }
+
+    @RequestMapping("/login")
+    public ResponseVO login(@NotEmpty String checkCodeKey,
+                            @NotEmpty String checkCode,
+                            @NotEmpty @Email @Size(max = 50) String email,
+                            @NotEmpty @Size(max = 32) String password) {
+        try {
+            if (!redisComponent.getCheckCode(checkCodeKey).equals(checkCode)) {
+                throw new BusinessException("验证码错误");
+            }
+            TokenUserInfoDTO tokenUserInfoDTO = userInfoService.login(email, password);
+            return getSuccessResponseVO(tokenUserInfoDTO);
         } finally {
             redisComponent.cleanCheckCode(checkCodeKey);
         }

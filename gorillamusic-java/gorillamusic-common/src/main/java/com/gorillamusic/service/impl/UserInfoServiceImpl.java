@@ -4,11 +4,15 @@ import java.util.Date;
 import java.util.List;
 
 import com.gorillamusic.entity.constants.Constants;
+import com.gorillamusic.entity.dto.TokenUserInfoDTO;
 import com.gorillamusic.entity.enums.UserStatusEnum;
 import com.gorillamusic.exception.BusinessException;
+import com.gorillamusic.redis.RedisComponent;
+import com.gorillamusic.utils.CopyTools;
 import com.gorillamusic.utils.FileUtils;
 import jakarta.annotation.Resource;
 
+import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 
 import com.gorillamusic.entity.enums.PageSize;
@@ -32,6 +36,8 @@ public class UserInfoServiceImpl implements UserInfoService {
     private UserInfoMapper<UserInfo, UserInfoQuery> userInfoMapper;
     @Resource
     private FileUtils fileUtils;
+    @Resource
+    private RedisComponent redisComponent;
 
     /**
      * 根据条件查询列表
@@ -177,4 +183,59 @@ public class UserInfoServiceImpl implements UserInfoService {
         userInfo.setAvatar(fileUtils.copyAvatar(userId));
         this.userInfoMapper.insert(userInfo);
     }
+
+    @Override
+    public TokenUserInfoDTO login(String email, String password) {
+        UserInfo userInfo = this.userInfoMapper.selectByEmail(email);
+        if (userInfo == null || !userInfo.getPassword().equals(password)) {
+            throw new BusinessException("账号或密码错误");
+        }
+        if (UserStatusEnum.DISABLE.getStatus().equals(userInfo.getStatus())) {
+            throw new BusinessException("账号被禁用");
+        }
+
+        UserInfo updateUserInfo = new UserInfo();
+        updateUserInfo.setLastLoginTime(new Date());
+        this.userInfoMapper.updateByUserId(updateUserInfo, updateUserInfo.getUserId());
+        TokenUserInfoDTO tokenUserInfoDTO = CopyTools.copy(userInfo, TokenUserInfoDTO.class);
+        String token = StringTools.encodeByMD5(tokenUserInfoDTO.getUserId()+StringTools.getRandomNumber(Constants.LENGTH_20));
+        tokenUserInfoDTO.setToken(token);
+        redisComponent.saveTokenUserInfoDto(tokenUserInfoDTO);
+        return tokenUserInfoDTO;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

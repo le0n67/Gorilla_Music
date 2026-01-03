@@ -1,6 +1,7 @@
 package com.gorillamusic.redis;
 
 import com.gorillamusic.entity.constants.Constants;
+import com.gorillamusic.entity.dto.TokenUserInfoDTO;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Component;
 
@@ -33,4 +34,7 @@ public class RedisComponent {
         redisUtils.delete(Constants.REDIS_KEY_CHECK_CODE + checkCodeKey);
     }
 
+    public void saveTokenUserInfoDto(TokenUserInfoDTO tokenUserInfoDTO) {
+        redisUtils.setex(Constants.REDIS_KEY_TOKEN_WEB_USER+tokenUserInfoDTO.getToken(), tokenUserInfoDTO,Constants.REDIS_KEY_EXPRESS_ONE_DAY);
+    }
 }

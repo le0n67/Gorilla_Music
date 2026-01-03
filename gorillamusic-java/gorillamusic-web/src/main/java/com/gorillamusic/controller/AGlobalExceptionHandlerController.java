@@ -4,6 +4,7 @@ import com.gorillamusic.entity.vo.ResponseVO;
 import com.gorillamusic.exception.BusinessException;
 
 
+import jakarta.validation.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DuplicateKeyException;
@@ -34,7 +35,7 @@ public class AGlobalExceptionHandlerController extends ABaseController {
             responseVO.setCode(biz.getCode() == null ? ResponseCodeEnum.CODE_600.getCode() : biz.getCode());
             responseVO.setInfo(biz.getMessage());
             responseVO.setStatus(STATUC_ERROR);
-        } else if (e instanceof BindException || e instanceof MethodArgumentTypeMismatchException) {
+        } else if (e instanceof BindException || e instanceof MethodArgumentTypeMismatchException||e instanceof ConstraintViolationException) {
             //参数类型错误
             responseVO.setCode(ResponseCodeEnum.CODE_600.getCode());
             responseVO.setInfo(ResponseCodeEnum.CODE_600.getMsg());
