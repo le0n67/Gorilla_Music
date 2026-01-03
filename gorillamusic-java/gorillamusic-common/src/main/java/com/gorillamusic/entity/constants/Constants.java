@@ -26,4 +26,14 @@ public class Constants {
      * Redis验证码校验键前缀，用于存储验证码相关的缓存键
      */
     public static final String REDIS_KEY_CHECK_CODE = REDIS_KEY_PREFIX + "checkcode:";
+
+    public static final Integer LENGTH_12=12;
+
+    public static final String DEFAULT_AVATAR_PATH = "/avatar/%d.png";
+    public static final String FILE_FOLDER = "file";
+    public static final String FILE_FOLDER_FILE = "file/";
+    public static final String FILE_FOLDER_AVATAR = "avatar/";
+    public static final String FILE_FOLDER_MUSIC = "music/";
+    public static final String AVATAR_SUFFIX = ".png";
+
 }

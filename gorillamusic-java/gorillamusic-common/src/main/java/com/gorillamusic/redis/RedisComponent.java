@@ -21,8 +21,16 @@ public class RedisComponent {
 
     public String saveCheckCode(String code) {
         String checkCodeKey = UUID.randomUUID().toString();
-        redisUtils.setex(Constants.REDIS_KEY_CHECK_CODE, code, Constants.REDIS_KEY_EXPRESS_ONE_MIN * 10);
+        redisUtils.setex(Constants.REDIS_KEY_CHECK_CODE + checkCodeKey, code, Constants.REDIS_KEY_EXPRESS_ONE_MIN * 10);
         return checkCodeKey;
+    }
+
+    public String getCheckCode(String checkCodeKey) {
+        return (String) redisUtils.get(Constants.REDIS_KEY_CHECK_CODE + checkCodeKey);
+    }
+
+    public void cleanCheckCode(String checkCodeKey) {
+        redisUtils.delete(Constants.REDIS_KEY_CHECK_CODE + checkCodeKey);
     }
 
 }
