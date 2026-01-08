@@ -37,4 +37,8 @@ public class RedisComponent {
     public void saveTokenUserInfoDto(TokenUserInfoDTO tokenUserInfoDTO) {
         redisUtils.setex(Constants.REDIS_KEY_TOKEN_WEB_USER+tokenUserInfoDTO.getToken(), tokenUserInfoDTO,Constants.REDIS_KEY_EXPRESS_ONE_DAY);
     }
+
+    public TokenUserInfoDTO getTokenUserInfoDto(String token) {
+        return (TokenUserInfoDTO) redisUtils.get(Constants.REDIS_KEY_TOKEN_WEB_USER+token);
+    }
 }

@@ -77,5 +77,11 @@ public class AccountController extends ABaseController {
         }
     }
 
+    @RequestMapping("/getLoginInfo")
+    public ResponseVO login() {
+        TokenUserInfoDTO tokenUserInfoDTO = getLoginUserInfo(null);
+        return getSuccessResponseVO(tokenUserInfoDTO);
+    }
+
 
 }

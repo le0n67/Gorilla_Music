@@ -1,7 +1,18 @@
 package com.gorillamusic.controller;
+import com.gorillamusic.entity.dto.TokenUserInfoDTO;
 import com.gorillamusic.entity.enums.ResponseCodeEnum;
 import com.gorillamusic.entity.vo.ResponseVO;
 import com.gorillamusic.exception.BusinessException;
+import com.gorillamusic.redis.RedisComponent;
+import com.gorillamusic.utils.StringTools;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.servlet.mvc.condition.RequestConditionHolder;
+
+import java.net.http.HttpRequest;
 
 
 public class ABaseController {
@@ -9,6 +20,9 @@ public class ABaseController {
     protected static final String STATUC_SUCCESS = "success";
 
     protected static final String STATUC_ERROR = "error";
+
+    @Resource
+    private RedisComponent redisComponent;
 
     protected <T> ResponseVO getSuccessResponseVO(T t) {
         ResponseVO<T> responseVO = new ResponseVO<>();
@@ -39,5 +53,14 @@ public class ABaseController {
         vo.setInfo(ResponseCodeEnum.CODE_500.getMsg());
         vo.setData(t);
         return vo;
+    }
+
+    protected TokenUserInfoDTO getLoginUserInfo(String  token) {
+        if(StringTools.isEmpty( token)){
+            HttpServletRequest request =((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+            token=request.getHeader("token");
+        }
+        TokenUserInfoDTO tokenUserInfoDTO = redisComponent.getTokenUserInfoDto(token);
+        return tokenUserInfoDTO;
     }
 }

@@ -1,4 +1,5 @@
 package com.gorillamusic.controller;
+
 import com.gorillamusic.entity.enums.ResponseCodeEnum;
 import com.gorillamusic.entity.vo.ResponseVO;
 import com.gorillamusic.exception.BusinessException;
@@ -15,6 +16,8 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
+
 @RestControllerAdvice
 public class AGlobalExceptionHandlerController extends ABaseController {
 
@@ -25,7 +28,7 @@ public class AGlobalExceptionHandlerController extends ABaseController {
         logger.error("请求错误，请求地址{},错误信息:", request.getRequestURL(), e);
         ResponseVO responseVO = new ResponseVO();
         //404
-        if (e instanceof NoHandlerFoundException) {
+        if (e instanceof NoHandlerFoundException || e instanceof NoResourceFoundException) {
             responseVO.setCode(ResponseCodeEnum.CODE_404.getCode());
             responseVO.setInfo(ResponseCodeEnum.CODE_404.getMsg());
             responseVO.setStatus(STATUC_ERROR);
@@ -35,7 +38,7 @@ public class AGlobalExceptionHandlerController extends ABaseController {
             responseVO.setCode(biz.getCode() == null ? ResponseCodeEnum.CODE_600.getCode() : biz.getCode());
             responseVO.setInfo(biz.getMessage());
             responseVO.setStatus(STATUC_ERROR);
-        } else if (e instanceof BindException || e instanceof MethodArgumentTypeMismatchException||e instanceof ConstraintViolationException) {
+        } else if (e instanceof BindException || e instanceof MethodArgumentTypeMismatchException || e instanceof ConstraintViolationException) {
             //参数类型错误
             responseVO.setCode(ResponseCodeEnum.CODE_600.getCode());
             responseVO.setInfo(ResponseCodeEnum.CODE_600.getMsg());

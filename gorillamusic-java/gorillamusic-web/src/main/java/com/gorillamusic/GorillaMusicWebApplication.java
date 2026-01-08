@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableAsync
 public class GorillaMusicWebApplication {
     public static void main(String[] args) {
-        System.out.println("MusicWeb start");
+        System.out.println("===========================MusicWeb start===========================");
         SpringApplication.run(GorillaMusicWebApplication.class, args);
     }
 }
