@@ -1,4 +1,5 @@
 package com.gorillamusic.controller;
+
 import com.gorillamusic.entity.dto.TokenUserInfoDTO;
 import com.gorillamusic.entity.enums.ResponseCodeEnum;
 import com.gorillamusic.entity.vo.ResponseVO;
@@ -55,12 +56,24 @@ public class ABaseController {
         return vo;
     }
 
-    protected TokenUserInfoDTO getLoginUserInfo(String  token) {
-        if(StringTools.isEmpty( token)){
-            HttpServletRequest request =((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-            token=request.getHeader("token");
+    protected TokenUserInfoDTO getLoginUserInfo(String token) {
+        if (StringTools.isEmpty(token)) {
+            HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+            token = request.getHeader("token");
         }
         TokenUserInfoDTO tokenUserInfoDTO = redisComponent.getTokenUserInfoDto(token);
         return tokenUserInfoDTO;
+    }
+
+    protected TokenUserInfoDTO getTokenUserInfo(String token) {
+        if (StringTools.isEmpty(token)) {
+            HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+            token = request.getHeader("token");
+        }
+        if (StringTools.isEmpty(token)) {
+            return null;
+        }
+        TokenUserInfoDTO tokenUserInfoDto = redisComponent.getTokenUserInfoDto(token);
+        return tokenUserInfoDto;
     }
 }

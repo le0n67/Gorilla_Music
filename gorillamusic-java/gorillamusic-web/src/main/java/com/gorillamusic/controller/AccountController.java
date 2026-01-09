@@ -77,6 +77,15 @@ public class AccountController extends ABaseController {
         }
     }
 
+    @RequestMapping(value = "/logout")
+    public ResponseVO logout() {
+        TokenUserInfoDTO tokenUserInfoDto = getTokenUserInfo(null);
+        if (tokenUserInfoDto == null) {
+            return getSuccessResponseVO(null);
+        }
+        redisComponent.cleanUserToken(tokenUserInfoDto.getToken());
+        return getSuccessResponseVO(null);
+    }
     @RequestMapping("/getLoginInfo")
     public ResponseVO login() {
         TokenUserInfoDTO tokenUserInfoDTO = getLoginUserInfo(null);
