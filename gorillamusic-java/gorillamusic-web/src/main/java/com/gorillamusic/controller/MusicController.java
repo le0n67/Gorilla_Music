@@ -8,6 +8,7 @@ import com.gorillamusic.entity.query.MusicInfoQuery;
 import com.gorillamusic.entity.vo.ResponseVO;
 import com.gorillamusic.service.MusicInfoService;
 import jakarta.annotation.Resource;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.extern.slf4j.Slf4j;
 import com.gorillamusic.entity.vo.PaginationResultVO;
 import org.springframework.validation.annotation.Validated;
@@ -53,8 +54,20 @@ public class MusicController extends ABaseController {
             query.setPageSize(PageSize.SIZE20.getSize());
         }
         query.setPageNo(pageNo);
-        PaginationResultVO  list = musicInfoService.findListByPage(query);
+        PaginationResultVO list = musicInfoService.findListByPage(query);
         return getSuccessResponseVO(list);
+    }
+
+    @RequestMapping("/musicDetail")
+    public ResponseVO musicDetail(@NotEmpty String musicId) {
+        MusicInfo musicInfo = musicInfoService.getMusicInfoByMusicId(musicId);
+        return getSuccessResponseVO(musicInfo);
+    }
+
+    @RequestMapping("/updatePlayCount")
+    public ResponseVO updatePlayCount(@NotEmpty String musicId) {
+        musicInfoService.updateMusicCount(musicId);
+        return getSuccessResponseVO(null);
     }
 
 }
