@@ -43,4 +43,11 @@ public class Constants {
     public static final String FILE_FOLDER_MUSIC = "music/";
     public static final String AVATAR_SUFFIX = ".png";
 
+
+    /**
+     * 图片后缀数组
+     */
+    public static final String[] IMAGES_SUFFIX = {".jpeg", ".jpg", ".png", ".gif", ".bmp", ".webp"};
+
+
 }

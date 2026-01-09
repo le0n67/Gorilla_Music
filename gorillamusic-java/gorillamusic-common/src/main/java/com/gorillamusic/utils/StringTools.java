@@ -62,4 +62,21 @@ public class StringTools {
     public static final String encodeByMD5(String originString) {
         return StringTools.isEmpty(originString) ? null : DigestUtils.md5Hex(originString);
     }
+
+    //取文件后缀
+    public static String getFileSuffix(String fileName) {
+        return fileName.substring(fileName.lastIndexOf("."));
+    }
+
+    //防止越权访问
+    public static Boolean pathIsOk(String path) {
+        if (StringTools.isEmpty(path)) {
+            return true;
+        }
+        if (path.contains("../") || path.contains("..\\")) {
+            return false;
+        }
+        return true;
+    }
+
 }
