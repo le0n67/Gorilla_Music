@@ -13,7 +13,7 @@ public enum CommendTypeEnum {
         this.typpe = typpe;
     }
 
-    public Integer getTyppe() {
+    public Integer getType() {
         return typpe;
     }
 

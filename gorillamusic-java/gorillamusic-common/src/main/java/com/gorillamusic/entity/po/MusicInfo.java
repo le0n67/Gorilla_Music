@@ -97,7 +97,15 @@ public class MusicInfo implements Serializable {
 
 	private String nickName;
 
+	private Boolean doGood;
 
+	public Boolean getDoGood() {
+		return doGood;
+	}
+
+	public void setDoGood(Boolean doGood) {
+		this.doGood = doGood;
+	}
 
 	public String getAvatar() {
 		return avatar;

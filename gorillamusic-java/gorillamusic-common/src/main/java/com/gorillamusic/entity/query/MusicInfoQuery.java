@@ -9,309 +9,330 @@ import java.util.Date;
 public class MusicInfoQuery extends BaseParam {
 
 
-	/**
-	 * 音乐ID
-	 */
-	private String musicId;
+    /**
+     * 音乐ID
+     */
+    private String musicId;
 
-	private String musicIdFuzzy;
+    private String musicIdFuzzy;
 
-	/**
-	 * 用户ID
-	 */
-	private String userId;
+    /**
+     * 用户ID
+     */
+    private String userId;
 
-	private String userIdFuzzy;
+    private String userIdFuzzy;
 
-	/**
-	 * 任务ID
-	 */
-	private String taskId;
+    /**
+     * 任务ID
+     */
+    private String taskId;
 
-	private String taskIdFuzzy;
+    private String taskIdFuzzy;
 
-	/**
-	 * 创作ID
-	 */
-	private String creationId;
+    /**
+     * 创作ID
+     */
+    private String creationId;
 
-	private String creationIdFuzzy;
+    private String creationIdFuzzy;
 
-	/**
-	 * 标题
-	 */
-	private String musicTitle;
+    /**
+     * 标题
+     */
+    private String musicTitle;
 
-	private String musicTitleFuzzy;
+    private String musicTitleFuzzy;
 
-	/**
-	 * 封面
-	 */
-	private String cover;
+    /**
+     * 封面
+     */
+    private String cover;
 
-	private String coverFuzzy;
+    private String coverFuzzy;
 
-	/**
-	 * 音乐地址
-	 */
-	private String audioPath;
+    /**
+     * 音乐地址
+     */
+    private String audioPath;
 
-	private String audioPathFuzzy;
+    private String audioPathFuzzy;
 
-	/**
-	 * 持续时间
-	 */
-	private Integer duration;
+    /**
+     * 持续时间
+     */
+    private Integer duration;
 
-	/**
-	 * 歌词
-	 */
-	private String lyrics;
+    /**
+     * 歌词
+     */
+    private String lyrics;
 
-	private String lyricsFuzzy;
+    private String lyricsFuzzy;
 
-	/**
-	 * 播放数量
-	 */
-	private Integer playCount;
+    /**
+     * 播放数量
+     */
+    private Integer playCount;
 
-	/**
-	 * 点赞数
-	 */
-	private Integer goodCount;
+    /**
+     * 点赞数
+     */
+    private Integer goodCount;
 
-	/**
-	 * 0:未推荐 1:已推荐
-	 */
-	private Integer commendType;
+    /**
+     * 0:未推荐 1:已推荐
+     */
+    private Integer commendType;
 
-	/**
-	 * 创建时间
-	 */
-	private String createTime;
+    /**
+     * 创建时间
+     */
+    private String createTime;
 
-	private String createTimeStart;
+    private String createTimeStart;
 
-	private String createTimeEnd;
+    private String createTimeEnd;
 
-	/**
-	 * 0:生成音乐中 1:生成完毕
-	 */
-	private Integer musicStatus;
+    /**
+     * 0:生成音乐中 1:生成完毕
+     */
+    private Integer musicStatus;
 
-	/**
-	 * 音乐类型 0:音乐 1:纯音乐
-	 */
-	private Integer musicType;
+    /**
+     * 音乐类型 0:音乐 1:纯音乐
+     */
+    private Integer musicType;
 
-	private Boolean queryUser;
+    private Boolean queryUser;
 
-	public Boolean getQueryUser() {
-		return queryUser;
-	}
+    private Boolean queryLikeMusic;
 
-	public void setQueryUser(Boolean queryUser) {
-		this.queryUser = queryUser;
-	}
+    private String currentUserId;
 
+    public Boolean getQueryLikeMusic() {
+        return queryLikeMusic;
+    }
 
-	public void setMusicId(String musicId){
-		this.musicId = musicId;
-	}
+    public void setQueryLike(Boolean queryLikeMusic) {
+        this.queryLikeMusic = queryLikeMusic;
+    }
 
-	public String getMusicId(){
-		return this.musicId;
-	}
+    public String getCurrentUserId() {
+        return currentUserId;
+    }
 
-	public void setMusicIdFuzzy(String musicIdFuzzy){
-		this.musicIdFuzzy = musicIdFuzzy;
-	}
+    public void setCurrentUserId(String currentUserId) {
+        this.currentUserId = currentUserId;
+    }
 
-	public String getMusicIdFuzzy(){
-		return this.musicIdFuzzy;
-	}
+    public Boolean getQueryUser() {
+        return queryUser;
+    }
 
-	public void setUserId(String userId){
-		this.userId = userId;
-	}
+    public void setQueryUser(Boolean queryUser) {
+        this.queryUser = queryUser;
+    }
 
-	public String getUserId(){
-		return this.userId;
-	}
 
-	public void setUserIdFuzzy(String userIdFuzzy){
-		this.userIdFuzzy = userIdFuzzy;
-	}
+    public void setMusicId(String musicId) {
+        this.musicId = musicId;
+    }
 
-	public String getUserIdFuzzy(){
-		return this.userIdFuzzy;
-	}
+    public String getMusicId() {
+        return this.musicId;
+    }
 
-	public void setTaskId(String taskId){
-		this.taskId = taskId;
-	}
+    public void setMusicIdFuzzy(String musicIdFuzzy) {
+        this.musicIdFuzzy = musicIdFuzzy;
+    }
 
-	public String getTaskId(){
-		return this.taskId;
-	}
+    public String getMusicIdFuzzy() {
+        return this.musicIdFuzzy;
+    }
 
-	public void setTaskIdFuzzy(String taskIdFuzzy){
-		this.taskIdFuzzy = taskIdFuzzy;
-	}
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-	public String getTaskIdFuzzy(){
-		return this.taskIdFuzzy;
-	}
+    public String getUserId() {
+        return this.userId;
+    }
 
-	public void setCreationId(String creationId){
-		this.creationId = creationId;
-	}
+    public void setUserIdFuzzy(String userIdFuzzy) {
+        this.userIdFuzzy = userIdFuzzy;
+    }
 
-	public String getCreationId(){
-		return this.creationId;
-	}
+    public String getUserIdFuzzy() {
+        return this.userIdFuzzy;
+    }
 
-	public void setCreationIdFuzzy(String creationIdFuzzy){
-		this.creationIdFuzzy = creationIdFuzzy;
-	}
+    public void setTaskId(String taskId) {
+        this.taskId = taskId;
+    }
 
-	public String getCreationIdFuzzy(){
-		return this.creationIdFuzzy;
-	}
+    public String getTaskId() {
+        return this.taskId;
+    }
 
-	public void setMusicTitle(String musicTitle){
-		this.musicTitle = musicTitle;
-	}
+    public void setTaskIdFuzzy(String taskIdFuzzy) {
+        this.taskIdFuzzy = taskIdFuzzy;
+    }
 
-	public String getMusicTitle(){
-		return this.musicTitle;
-	}
+    public String getTaskIdFuzzy() {
+        return this.taskIdFuzzy;
+    }
 
-	public void setMusicTitleFuzzy(String musicTitleFuzzy){
-		this.musicTitleFuzzy = musicTitleFuzzy;
-	}
+    public void setCreationId(String creationId) {
+        this.creationId = creationId;
+    }
 
-	public String getMusicTitleFuzzy(){
-		return this.musicTitleFuzzy;
-	}
+    public String getCreationId() {
+        return this.creationId;
+    }
 
-	public void setCover(String cover){
-		this.cover = cover;
-	}
+    public void setCreationIdFuzzy(String creationIdFuzzy) {
+        this.creationIdFuzzy = creationIdFuzzy;
+    }
 
-	public String getCover(){
-		return this.cover;
-	}
+    public String getCreationIdFuzzy() {
+        return this.creationIdFuzzy;
+    }
 
-	public void setCoverFuzzy(String coverFuzzy){
-		this.coverFuzzy = coverFuzzy;
-	}
+    public void setMusicTitle(String musicTitle) {
+        this.musicTitle = musicTitle;
+    }
 
-	public String getCoverFuzzy(){
-		return this.coverFuzzy;
-	}
+    public String getMusicTitle() {
+        return this.musicTitle;
+    }
 
-	public void setAudioPath(String audioPath){
-		this.audioPath = audioPath;
-	}
+    public void setMusicTitleFuzzy(String musicTitleFuzzy) {
+        this.musicTitleFuzzy = musicTitleFuzzy;
+    }
 
-	public String getAudioPath(){
-		return this.audioPath;
-	}
+    public String getMusicTitleFuzzy() {
+        return this.musicTitleFuzzy;
+    }
 
-	public void setAudioPathFuzzy(String audioPathFuzzy){
-		this.audioPathFuzzy = audioPathFuzzy;
-	}
+    public void setCover(String cover) {
+        this.cover = cover;
+    }
 
-	public String getAudioPathFuzzy(){
-		return this.audioPathFuzzy;
-	}
+    public String getCover() {
+        return this.cover;
+    }
 
-	public void setDuration(Integer duration){
-		this.duration = duration;
-	}
+    public void setCoverFuzzy(String coverFuzzy) {
+        this.coverFuzzy = coverFuzzy;
+    }
 
-	public Integer getDuration(){
-		return this.duration;
-	}
+    public String getCoverFuzzy() {
+        return this.coverFuzzy;
+    }
 
-	public void setLyrics(String lyrics){
-		this.lyrics = lyrics;
-	}
+    public void setAudioPath(String audioPath) {
+        this.audioPath = audioPath;
+    }
 
-	public String getLyrics(){
-		return this.lyrics;
-	}
+    public String getAudioPath() {
+        return this.audioPath;
+    }
 
-	public void setLyricsFuzzy(String lyricsFuzzy){
-		this.lyricsFuzzy = lyricsFuzzy;
-	}
+    public void setAudioPathFuzzy(String audioPathFuzzy) {
+        this.audioPathFuzzy = audioPathFuzzy;
+    }
 
-	public String getLyricsFuzzy(){
-		return this.lyricsFuzzy;
-	}
+    public String getAudioPathFuzzy() {
+        return this.audioPathFuzzy;
+    }
 
-	public void setPlayCount(Integer playCount){
-		this.playCount = playCount;
-	}
+    public void setDuration(Integer duration) {
+        this.duration = duration;
+    }
 
-	public Integer getPlayCount(){
-		return this.playCount;
-	}
+    public Integer getDuration() {
+        return this.duration;
+    }
 
-	public void setGoodCount(Integer goodCount){
-		this.goodCount = goodCount;
-	}
+    public void setLyrics(String lyrics) {
+        this.lyrics = lyrics;
+    }
 
-	public Integer getGoodCount(){
-		return this.goodCount;
-	}
+    public String getLyrics() {
+        return this.lyrics;
+    }
 
-	public void setCommendType(Integer commendType){
-		this.commendType = commendType;
-	}
+    public void setLyricsFuzzy(String lyricsFuzzy) {
+        this.lyricsFuzzy = lyricsFuzzy;
+    }
 
-	public Integer getCommendType(){
-		return this.commendType;
-	}
+    public String getLyricsFuzzy() {
+        return this.lyricsFuzzy;
+    }
 
-	public void setCreateTime(String createTime){
-		this.createTime = createTime;
-	}
+    public void setPlayCount(Integer playCount) {
+        this.playCount = playCount;
+    }
 
-	public String getCreateTime(){
-		return this.createTime;
-	}
+    public Integer getPlayCount() {
+        return this.playCount;
+    }
 
-	public void setCreateTimeStart(String createTimeStart){
-		this.createTimeStart = createTimeStart;
-	}
+    public void setGoodCount(Integer goodCount) {
+        this.goodCount = goodCount;
+    }
 
-	public String getCreateTimeStart(){
-		return this.createTimeStart;
-	}
-	public void setCreateTimeEnd(String createTimeEnd){
-		this.createTimeEnd = createTimeEnd;
-	}
+    public Integer getGoodCount() {
+        return this.goodCount;
+    }
 
-	public String getCreateTimeEnd(){
-		return this.createTimeEnd;
-	}
+    public void setCommendType(Integer commendType) {
+        this.commendType = commendType;
+    }
 
-	public void setMusicStatus(Integer musicStatus){
-		this.musicStatus = musicStatus;
-	}
+    public Integer getCommendType() {
+        return this.commendType;
+    }
 
-	public Integer getMusicStatus(){
-		return this.musicStatus;
-	}
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
 
-	public void setMusicType(Integer musicType){
-		this.musicType = musicType;
-	}
+    public String getCreateTime() {
+        return this.createTime;
+    }
 
-	public Integer getMusicType(){
-		return this.musicType;
-	}
+    public void setCreateTimeStart(String createTimeStart) {
+        this.createTimeStart = createTimeStart;
+    }
+
+    public String getCreateTimeStart() {
+        return this.createTimeStart;
+    }
+
+    public void setCreateTimeEnd(String createTimeEnd) {
+        this.createTimeEnd = createTimeEnd;
+    }
+
+    public String getCreateTimeEnd() {
+        return this.createTimeEnd;
+    }
+
+    public void setMusicStatus(Integer musicStatus) {
+        this.musicStatus = musicStatus;
+    }
+
+    public Integer getMusicStatus() {
+        return this.musicStatus;
+    }
+
+    public void setMusicType(Integer musicType) {
+        this.musicType = musicType;
+    }
+
+    public Integer getMusicType() {
+        return this.musicType;
+    }
 
 }
