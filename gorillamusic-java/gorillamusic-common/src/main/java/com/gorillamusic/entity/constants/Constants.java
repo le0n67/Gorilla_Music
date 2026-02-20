@@ -30,10 +30,13 @@ public class Constants {
      */
     public static final String REDIS_KEY_CHECK_CODE = REDIS_KEY_PREFIX + "checkcode:";
     public static final String REDIS_KEY_TOKEN_WEB_USER = REDIS_KEY_PREFIX + "token:";
+    public static final String REDIS_KEY_TOKEN_ADMIN_USER = REDIS_KEY_PREFIX + "token:admin:";
+
 
 
     public static final Integer LENGTH_12 = 12;
     public static final Integer LENGTH_20 = 20;
+    public static final Integer LENGTH_30 = 30;
 
     //文件
     public static final String DEFAULT_AVATAR_PATH = "/avatar/%d.png";

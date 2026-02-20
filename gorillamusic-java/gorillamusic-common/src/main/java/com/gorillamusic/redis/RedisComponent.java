@@ -1,6 +1,7 @@
 package com.gorillamusic.redis;
 
 import com.gorillamusic.entity.constants.Constants;
+import com.gorillamusic.entity.dto.TokenUserInfo4AdminDTO;
 import com.gorillamusic.entity.dto.TokenUserInfoDTO;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Component;
@@ -45,4 +46,17 @@ public class RedisComponent {
     public TokenUserInfoDTO getTokenUserInfoDto(String token) {
         return (TokenUserInfoDTO) redisUtils.get(Constants.REDIS_KEY_TOKEN_WEB_USER + token);
     }
+
+    public void saveTokenUserInfo4AdminDTO(TokenUserInfo4AdminDTO tokenUserInfo4AdminDTO) {
+        redisUtils.setex(Constants.REDIS_KEY_TOKEN_ADMIN_USER + tokenUserInfo4AdminDTO.getToken(), tokenUserInfo4AdminDTO, Constants.REDIS_KEY_EXPRESS_ONE_DAY);
+    }
+
+    public TokenUserInfo4AdminDTO getTokenUserInfo4AdminDTO(String token) {
+        return (TokenUserInfo4AdminDTO) redisUtils.get(Constants.REDIS_KEY_TOKEN_ADMIN_USER + token);
+    }
+
+    public void cleanAdminUserToken(String token) {
+        redisUtils.delete(Constants.REDIS_KEY_TOKEN_ADMIN_USER + token);
+    }
+
 }

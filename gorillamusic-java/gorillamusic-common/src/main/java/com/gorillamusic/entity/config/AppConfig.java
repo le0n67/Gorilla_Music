@@ -16,6 +16,17 @@ public class AppConfig {
     @Value("${project.folder}")
     private String projectFolder;
 
+    @Value("${admin.account}")
+    private String account;
+
+    @Value("${admin.password}")
+
+    public String password;
+
+    public String getPassword() {return password;}
+
+    public String getAccount() {return account;}
+
     public String getProjectFolder() {
         return projectFolder;
     }
